@@ -1,0 +1,47 @@
+CMPT 310 – Weighted Depth-First Search  
+Samaira Samaira (301592227)  
+ssa6012@sfu.ca  
+
+Algorithm Name: Weighted Depth-First Search (Weighted DFS)  
+Search Type: Uninformed Search – Depth-First Search with Cost Consideration  
+Objective: To improve the solution quality of standard depth-first search when action costs vary, while maintaining the recursive DFS structure and space complexity of O(bs)
+
+Analysis:  
+In the regular depth-first search algorithm, the search explores the deepest possible path first, without considering the cost of actions. It assumes that each step has the same cost, usually just counting each move as one unit. But in many real-world scenarios, actions can have different positive costs. In such cases, blindly going down the leftmost path may lead to unnecessarily expensive solutions.
+
+To improve this, we can modify DFS to look at the cost of each possible action at every node. Instead of choosing the next node in an arbitrary order, we sort the successors based on their step cost and then recurse. This means we still go deep, like regular DFS, but we give priority to cheaper options first. The search still uses the same recursive structure and space as DFS, but it has a better chance of finding a lower-cost path.
+
+This approach is useful when we want to improve the quality of solutions without switching to a different search strategy like Uniform Cost Search. It won’t always find the optimal path, but it gives more reasonable results than DFS that completely ignores costs.
+
+Pseudocode:
+
+function WEIGHTED-DFS(problem):  
+  node ← Node(state = problem.initial, path_cost = 0)  
+  visited ← empty set  
+  return RECURSIVE-WDFS(problem, node, visited)  
+
+function RECURSIVE-WDFS(problem, node, visited):  
+  if problem.GOAL-TEST(node.state):  
+    return node  
+
+  add node.state to visited  
+  successors ← empty list  
+
+  for each action in problem.ACTIONS(node.state):  
+    child_state ← problem.RESULT(node.state, action)  
+    if child_state not in visited:  
+      step_cost ← problem.PATH-COST(node.path_cost, node.state, action, child_state)  
+      child_node ← Node(state = child_state, parent = node, action = action, path_cost = step_cost)  
+      add (step_cost, child_node) to successors  
+
+  sort successors by step_cost in ascending order  
+
+  for each (_, child) in successors:  
+    result ← RECURSIVE-WDFS(problem, child, visited)  
+    if result ≠ failure:  
+      return result  
+
+  return failure  
+
+Conclusion:  
+This modified version of DFS allows us to improve the quality of solutions in cost-sensitive environments, without losing the simplicity and low memory requirements of depth-first search. While it does not guarantee an optimal path, it’s a practical improvement when we want to stay within the DFS framework but still consider action costs during search.
