@@ -1,11 +1,11 @@
-# 🧹 Vacuum Robot AI
+# Vacuum Robot AI
 
 An intelligent vacuum robot simulation built using Python and Tkinter.  
 This project implements various AI search algorithms to help the robot clean a grid-based environment efficiently.
 
 ---
 
-## 💡 Features
+##  Features
 
 - Real-time GUI using Tkinter
 - Grid-based environment with:
@@ -17,14 +17,14 @@ This project implements various AI search algorithms to help the robot clean a g
 
 ---
 
-## 🤖 Search Algorithms Implemented
+##  Search Algorithms Implemented
 
-- 🔵 Breadth-First Search (BFS)
-- 🔴 Depth-First Search (DFS)
-- 🟢 Uniform Cost Search (UCS)
-- 🟡 Greedy Search
-- 🟣 A* Search
-- 🟠 Reflex Agent (non-search-based)
+-  Breadth-First Search (BFS)
+-  Depth-First Search (DFS)
+-  Uniform Cost Search (UCS)
+-  Greedy Search
+-  A* Search
+-  Reflex Agent (non-search-based)
 
 ---
 ## RESULT
